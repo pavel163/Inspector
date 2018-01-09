@@ -32,15 +32,15 @@ public class Inspection<V extends View, Type> {
         rules.clear();
     }
 
-    public void inspect() {
+    public boolean inspect() {
         errorListener.setErrorEnabled(view, null, false);
-
         for (Rule<Type> rule : rules) {
             if (!rule.verify(valueListener.getValue(view))) {
                 errorListener.setErrorEnabled(view, rule.errorMessage(), true);
-                break;
+                return false;
             }
         }
+        return true;
     }
 
     public interface OnValueListener<V, Type> {

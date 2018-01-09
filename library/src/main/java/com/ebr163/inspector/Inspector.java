@@ -27,10 +27,16 @@ public class Inspector implements LifecycleObserver {
         inspectionList = new ArrayList<>();
     }
 
-    public void inspect() {
+    public boolean inspect() {
+        boolean tmp = true;
         for (Inspection inspection : inspectionList) {
-            inspection.inspect();
+            if (tmp){
+                tmp = inspection.inspect();
+            } else {
+                inspection.inspect();
+            }
         }
+        return tmp;
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
