@@ -25,7 +25,7 @@ public class Inspection<V extends View, Type> {
         this.rules = rules;
     }
 
-    public void unbind() {
+    public void clear() {
         view = null;
         valueListener = null;
         errorListener = null;

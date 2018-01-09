@@ -19,15 +19,11 @@ public class Inspector implements LifecycleObserver {
     private List<Inspection> inspectionList;
 
     public Inspector() {
-        init();
+        inspectionList = new ArrayList<>();
     }
 
     public Inspector(Lifecycle lifecycle) {
         lifecycle.addObserver(this);
-        init();
-    }
-
-    private void init() {
         inspectionList = new ArrayList<>();
     }
 
@@ -38,9 +34,13 @@ public class Inspector implements LifecycleObserver {
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    public void onDestroy() {
+    public void clear() {
         for (Inspection inspection : inspectionList) {
-            inspection.unbind();
+            inspection.clear();
         }
+    }
+
+    public void addInspection(Inspection inspection) {
+        inspectionList.add(inspection);
     }
 }

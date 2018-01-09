@@ -9,9 +9,9 @@ import com.ebr163.inspector.inspection.Inspection;
  * on 09.01.2018.
  */
 
-public class TextInputLayoutInspectionBuilder extends InspectionBuilder<TextInputLayout, CharSequence> {
+public class TextInputLayoutInspectBuilder extends InspectBuilder<TextInputLayout, CharSequence> {
 
-    public TextInputLayoutInspectionBuilder(TextInputLayout view) {
+    public TextInputLayoutInspectBuilder(TextInputLayout view) {
         super(view);
         addValueListener(new Inspection.OnValueListener<TextInputLayout, CharSequence>() {
             @Override
