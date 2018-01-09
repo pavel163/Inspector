@@ -2,7 +2,7 @@ package com.ebr163.inspector.builder;
 
 import android.support.design.widget.TextInputLayout;
 
-import com.ebr163.inspector.inspection.Inspection;
+import com.ebr163.inspector.inspection.InspectionObject;
 
 /**
  * Created by Bakht
@@ -13,7 +13,7 @@ public class TextInputLayoutInspectBuilder extends InspectBuilder<TextInputLayou
 
     public TextInputLayoutInspectBuilder(TextInputLayout view) {
         super(view);
-        addValueListener(new Inspection.OnValueListener<TextInputLayout, String>() {
+        addValueListener(new InspectionObject.OnValueListener<TextInputLayout, String>() {
             @Override
             public String getValue(TextInputLayout view) {
                 CharSequence charSequence = view.getEditText().getText();
@@ -25,7 +25,7 @@ public class TextInputLayoutInspectBuilder extends InspectBuilder<TextInputLayou
             }
         });
 
-        addErrorListener(new Inspection.OnErrorListener<TextInputLayout>() {
+        addErrorListener(new InspectionObject.OnErrorListener<TextInputLayout>() {
             @Override
             public void setErrorEnabled(TextInputLayout view, String error, boolean enabled) {
                 if (enabled) {

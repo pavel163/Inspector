@@ -2,7 +2,7 @@ package com.ebr163.inspector.builder;
 
 import android.support.v7.widget.ViewStubCompat;
 
-import com.ebr163.inspector.inspection.Inspection;
+import com.ebr163.inspector.inspection.InspectionObject;
 
 /**
  * Created by Bakht
@@ -16,7 +16,7 @@ public class StubInspectBuilder<T> extends InspectBuilder<ViewStubCompat, T> {
     public StubInspectBuilder(final T value) {
         super(null);
         this.value = value;
-        addValueListener(new Inspection.OnValueListener<ViewStubCompat, T>() {
+        addValueListener(new InspectionObject.OnValueListener<ViewStubCompat, T>() {
             @Override
             public T getValue(ViewStubCompat view) {
                 return StubInspectBuilder.this.value;
