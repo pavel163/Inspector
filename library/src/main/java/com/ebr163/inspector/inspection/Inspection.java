@@ -33,10 +33,15 @@ public class Inspection<V extends View, Type> {
     }
 
     public boolean inspect() {
-        errorListener.setErrorEnabled(view, null, false);
+        if (errorListener != null) {
+            errorListener.setErrorEnabled(view, null, false);
+        }
+
         for (Rule<Type> rule : rules) {
             if (!rule.verify(valueListener.getValue(view))) {
-                errorListener.setErrorEnabled(view, rule.errorMessage(), true);
+                if (errorListener != null) {
+                    errorListener.setErrorEnabled(view, rule.errorMessage(), true);
+                }
                 return false;
             }
         }
