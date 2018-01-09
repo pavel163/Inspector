@@ -1,7 +1,9 @@
-package com.ebr163.inspector.sample;
+package com.ebr163.inspector.sample.view_example;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.ebr163.inspector.sample.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -11,26 +11,25 @@ import java.util.List;
  * on 09.01.2018.
  */
 
-public class InspectionObject<V extends View, Type> implements Inspection {
+public class InspectionView<V extends View, Type> extends AbstractInspection<Type> {
 
-    private List<Rule<Type>> rules;
     private V view;
     private OnValueListener<V, Type> valueListener;
     private OnErrorListener<V> errorListener;
 
-    public InspectionObject(V view, List<Rule<Type>> rules, OnValueListener<V, Type> valueListener, OnErrorListener<V> errorListener) {
+    public InspectionView(V view, List<Rule<Type>> rules, OnValueListener<V, Type> valueListener, OnErrorListener<V> errorListener) {
+        super(rules);
         this.view = view;
         this.valueListener = valueListener;
         this.errorListener = errorListener;
-        this.rules = rules;
     }
 
     @Override
     public void clear() {
+        super.clear();
         view = null;
         valueListener = null;
         errorListener = null;
-        rules.clear();
     }
 
     @Override

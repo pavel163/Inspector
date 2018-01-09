@@ -4,4 +4,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/container"
-    tools:context="com.ebr163.inspector.sample.MainActivity"/>
+    tools:context="com.ebr163.inspector.sample.view_example.MainActivity"/>
