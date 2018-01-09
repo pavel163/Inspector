@@ -54,22 +54,22 @@ public class BaseExampleFragment extends Fragment {
         TextInputLayout til3 = getView().findViewById(R.id.til3);
         TextInputLayout til4 = getView().findViewById(R.id.til4);
 
-        Inspection<TextInputLayout, CharSequence> inspection1 = new TextInputLayoutInspectBuilder(til1)
-                .addRule(new NotNullRule<CharSequence>("Поле 1 не должно быть null"))
+        Inspection<TextInputLayout, String> inspection1 = new TextInputLayoutInspectBuilder(til1)
+                .addRule(new NotNullRule<String>("Поле 1 не должно быть null"))
                 .addRule(new TextNotEmptyRule("Поле 1 не должно быть пустым"))
                 .build();
 
-        Inspection<TextInputLayout, CharSequence> inspection2 = new TextInputLayoutInspectBuilder(til2)
-                .addRule(new NotNullRule<CharSequence>("Поле 2 не должно быть null"))
+        Inspection<TextInputLayout, String> inspection2 = new TextInputLayoutInspectBuilder(til2)
+                .addRule(new NotNullRule<String>("Поле 2 не должно быть null"))
                 .addRule(new TextNotEmptyRule("Поле 2 не должно быть пустым"))
                 .build();
 
-        Inspection<TextInputLayout, CharSequence> inspection3 = new TextInputLayoutInspectBuilder(til3)
-                .addRule(new NotNullRule<CharSequence>("Поле 3 не должно быть null"))
+        Inspection<TextInputLayout, String> inspection3 = new TextInputLayoutInspectBuilder(til3)
+                .addRule(new NotNullRule<String>("Поле 3 не должно быть null"))
                 .addRule(new TextNotEmptyRule("Поле 3 не должно быть пустым"))
                 .build();
 
-        Inspection<TextInputLayout, CharSequence> inspection4 = new TextInputLayoutInspectBuilder(til4)
+        Inspection<TextInputLayout, String> inspection4 = new TextInputLayoutInspectBuilder(til4)
                 .addRules(new TextNotEmptyRule("Поле 4 не должно быть пустым"), new TextLengthRule(5, TextLengthRule.TextLength.EQUAL, "Length is incorrect"))
                 .build();
 

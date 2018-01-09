@@ -5,7 +5,7 @@ package com.ebr163.inspector.rule;
  * on 09.01.2018.
  */
 
-public class TextLengthRule extends AbstractRule<CharSequence> {
+public class TextLengthRule extends AbstractRule<String> {
 
     private final int length;
     private final TextLength textLength;
@@ -21,7 +21,7 @@ public class TextLengthRule extends AbstractRule<CharSequence> {
     }
 
     @Override
-    public boolean verify(CharSequence value) {
+    public boolean verify(String value) {
         if (textLength == TextLength.EQUAL) {
             return value.length() == length;
         } else if (textLength == TextLength.LESS) {

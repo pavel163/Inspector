@@ -5,14 +5,14 @@ package com.ebr163.inspector.rule;
  * on 09.01.2018.
  */
 
-public class TextNotEmptyRule extends AbstractRule<String> {
+public class EmailRule extends AbstractRule<String> {
 
-    public TextNotEmptyRule(String errorMessage) {
+    public EmailRule(String errorMessage) {
         super(errorMessage);
     }
 
     @Override
     public boolean verify(String value) {
-        return value != null && value.length() != 0;
+        return false;
     }
 }

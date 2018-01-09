@@ -9,14 +9,19 @@ import com.ebr163.inspector.inspection.Inspection;
  * on 09.01.2018.
  */
 
-public class TextInputLayoutInspectBuilder extends InspectBuilder<TextInputLayout, CharSequence> {
+public class TextInputLayoutInspectBuilder extends InspectBuilder<TextInputLayout, String> {
 
     public TextInputLayoutInspectBuilder(TextInputLayout view) {
         super(view);
-        addValueListener(new Inspection.OnValueListener<TextInputLayout, CharSequence>() {
+        addValueListener(new Inspection.OnValueListener<TextInputLayout, String>() {
             @Override
-            public CharSequence getValue(TextInputLayout view) {
-                return view.getEditText().getText();
+            public String getValue(TextInputLayout view) {
+                CharSequence charSequence = view.getEditText().getText();
+                if (charSequence != null) {
+                    return charSequence.toString();
+                } else {
+                    return null;
+                }
             }
         });
 
