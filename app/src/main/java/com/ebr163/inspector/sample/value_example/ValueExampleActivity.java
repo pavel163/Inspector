@@ -3,7 +3,6 @@ package com.ebr163.inspector.sample.value_example;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.ebr163.inspector.Inspector;
@@ -27,9 +26,9 @@ public class ValueExampleActivity extends AppCompatActivity {
                     @Override
                     public void setErrorEnabled(boolean enabled, String error) {
                         if (!enabled)
-                            textView.setText("testNotError" + " " + "ins1");
+                            textView.setText("value1" + " " + "success");
                         else
-                            textView.setText("testError" + " " + error);
+                            textView.setText("value1" + " " + error);
                     }
                 }).build();
 
@@ -39,25 +38,20 @@ public class ValueExampleActivity extends AppCompatActivity {
                     @Override
                     public void setErrorEnabled(boolean enabled, String error) {
                         if (!enabled)
-                            textView.append("testNotError" + " " + "ins2");
+                            textView.append("value1" + " " + "success");
                         else
-                            textView.append("testError" + " " + error);
+                            textView.append("value1" + " " + error);
                     }
                 }).build();
 
         InspectionValue<String> inspectionValue3 = new InspectValueBuilder<>("ss")
-                .addRule(new TextNotEmptyRule("ins2"))
+                .addRule(new TextNotEmptyRule("ins3"))
                 .build();
 
         inspector.addInspection(inspectionValue1);
         inspector.addInspection(inspectionValue2);
         inspector.addInspection(inspectionValue3);
 
-        findViewById(R.id.check).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("result", String.valueOf(inspector.inspect()));
-            }
-        });
+        findViewById(R.id.check).setOnClickListener(view -> Log.d("result", String.valueOf(inspector.inspect())));
     }
 }

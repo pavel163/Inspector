@@ -22,7 +22,7 @@ import com.ebr163.inspector.sample.R;
  * on 09.01.2018.
  */
 
-public class BaseExampleFragment extends Fragment {
+public class ViewExampleFragment extends Fragment {
 
     private Inspector inspector;
 
@@ -43,12 +43,7 @@ public class BaseExampleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         inspector = new Inspector();
 
-        getView().findViewById(R.id.checkBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                inspector.inspect();
-            }
-        });
+        getView().findViewById(R.id.checkBtn).setOnClickListener(view1 -> inspector.inspect());
 
         TextInputLayout til1 = getView().findViewById(R.id.til1);
         TextInputLayout til2 = getView().findViewById(R.id.til2);
@@ -56,7 +51,7 @@ public class BaseExampleFragment extends Fragment {
         TextInputLayout til4 = getView().findViewById(R.id.til4);
 
         InspectionView<TextInputLayout, String> inspectionView1 = new TextInputLayoutInspectViewBuilder(til1)
-                .addRule(new NotNullRule<String>("Поле 1 не должно быть null"))
+                .addRule(new NotNullRule<>("Поле 1 не должно быть null"))
                 .addRule(new TextNotEmptyRule("Поле 1 не должно быть пустым"))
                 .build();
 
