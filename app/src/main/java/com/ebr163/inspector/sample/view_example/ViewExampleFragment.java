@@ -56,12 +56,12 @@ public class ViewExampleFragment extends Fragment {
                 .build();
 
         InspectionView<TextInputLayout, String> inspectionView2 = new TextInputLayoutInspectViewBuilder(til2)
-                .addRule(new NotNullRule<String>("Поле 2 не должно быть null"))
+                .addRule(new NotNullRule<>("Поле 2 не должно быть null"))
                 .addRule(new TextNotEmptyRule("Поле 2 не должно быть пустым"))
                 .build();
 
         InspectionView<TextInputLayout, String> inspectionView3 = new TextInputLayoutInspectViewBuilder(til3)
-                .addRule(new NotNullRule<String>("Поле 3 не должно быть null"))
+                .addRule(new NotNullRule<>("Поле 3 не должно быть null"))
                 .addRule(new TextNotEmptyRule("Поле 3 не должно быть пустым"))
                 .build();
 
