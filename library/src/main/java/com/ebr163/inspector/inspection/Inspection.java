@@ -33,11 +33,11 @@ public class Inspection<V extends View, Type> {
     }
 
     public void inspect() {
-        errorListener.hideError(view);
+        errorListener.setErrorEnabled(view, null, false);
 
         for (Rule<Type> rule : rules) {
             if (!rule.verify(valueListener.getValue(view))) {
-                errorListener.showError(view, rule.errorMessage());
+                errorListener.setErrorEnabled(view, rule.errorMessage(), true);
                 break;
             }
         }
@@ -48,9 +48,6 @@ public class Inspection<V extends View, Type> {
     }
 
     public interface OnErrorListener<V> {
-
-        void showError(V view, String errorMessage);
-
-        void hideError(V view);
+        void setErrorEnabled(V view, String error, boolean enabled);
     }
 }

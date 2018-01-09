@@ -13,6 +13,7 @@ import com.ebr163.inspector.Inspector;
 import com.ebr163.inspector.builder.TextInputLayoutInspectBuilder;
 import com.ebr163.inspector.inspection.Inspection;
 import com.ebr163.inspector.rule.NotNullRule;
+import com.ebr163.inspector.rule.TextLengthRule;
 import com.ebr163.inspector.rule.TextNotEmptyRule;
 
 /**
@@ -69,7 +70,7 @@ public class BaseExampleFragment extends Fragment {
                 .build();
 
         Inspection<TextInputLayout, CharSequence> inspection4 = new TextInputLayoutInspectBuilder(til4)
-                .addRules(new NotNullRule<CharSequence>("Поле 4 не должно быть null"), new TextNotEmptyRule("Поле 4 не должно быть пустым"))
+                .addRules(new TextNotEmptyRule("Поле 4 не должно быть пустым"), new TextLengthRule(5, TextLengthRule.TextLength.EQUAL, "Length is incorrect"))
                 .build();
 
         inspector.addInspection(inspection1);

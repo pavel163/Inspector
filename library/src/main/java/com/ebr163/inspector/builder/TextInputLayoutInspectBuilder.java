@@ -22,14 +22,13 @@ public class TextInputLayoutInspectBuilder extends InspectBuilder<TextInputLayou
 
         addErrorListener(new Inspection.OnErrorListener<TextInputLayout>() {
             @Override
-            public void showError(TextInputLayout view, String errorMessage) {
-                view.setError(errorMessage);
-                view.setErrorEnabled(true);
-            }
-
-            @Override
-            public void hideError(TextInputLayout view) {
-                view.setErrorEnabled(false);
+            public void setErrorEnabled(TextInputLayout view, String error, boolean enabled) {
+                if (enabled) {
+                    view.setError(error);
+                    view.setErrorEnabled(true);
+                } else {
+                    view.setErrorEnabled(false);
+                }
             }
         });
     }
