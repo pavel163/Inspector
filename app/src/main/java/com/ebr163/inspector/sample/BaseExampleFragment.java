@@ -69,8 +69,7 @@ public class BaseExampleFragment extends Fragment {
                 .build();
 
         Inspection<TextInputLayout, CharSequence> inspection4 = new TextInputLayoutInspectBuilder(til4)
-                .addRule(new NotNullRule<CharSequence>("Поле 4 не должно быть null"))
-                .addRule(new TextNotEmptyRule("Поле 4 не должно быть пустым"))
+                .addRules(new NotNullRule<CharSequence>("Поле 4 не должно быть null"), new TextNotEmptyRule("Поле 4 не должно быть пустым"))
                 .build();
 
         inspector.addInspection(inspection1);

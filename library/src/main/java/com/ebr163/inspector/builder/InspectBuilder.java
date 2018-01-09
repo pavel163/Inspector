@@ -6,6 +6,7 @@ import com.ebr163.inspector.inspection.Inspection;
 import com.ebr163.inspector.rule.Rule;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -27,6 +28,12 @@ public class InspectBuilder<V extends View, Type> {
 
     public InspectBuilder<V, Type> addRule(Rule<Type> rule) {
         rules.add(rule);
+        return this;
+    }
+
+    @SafeVarargs
+    public final InspectBuilder<V, Type> addRules(Rule<Type>... rules) {
+        Collections.addAll(this.rules, rules);
         return this;
     }
 
