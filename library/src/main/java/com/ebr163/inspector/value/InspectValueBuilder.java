@@ -1,6 +1,5 @@
-package com.ebr163.inspector.builder;
+package com.ebr163.inspector.value;
 
-import com.ebr163.inspector.inspection.InspectionValue;
 import com.ebr163.inspector.rule.Rule;
 
 import java.util.ArrayList;

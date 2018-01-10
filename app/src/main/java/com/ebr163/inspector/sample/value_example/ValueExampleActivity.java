@@ -6,10 +6,10 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.ebr163.inspector.Inspector;
-import com.ebr163.inspector.builder.InspectValueBuilder;
-import com.ebr163.inspector.inspection.InspectionValue;
 import com.ebr163.inspector.rule.TextNotEmptyRule;
 import com.ebr163.inspector.sample.R;
+import com.ebr163.inspector.value.InspectValueBuilder;
+import com.ebr163.inspector.value.InspectionValue;
 
 public class ValueExampleActivity extends AppCompatActivity {
 
@@ -22,26 +22,20 @@ public class ValueExampleActivity extends AppCompatActivity {
 
         InspectionValue<String> inspectionValue1 = new InspectValueBuilder<String>(null)
                 .addRule(new TextNotEmptyRule("ins1"))
-                .addErrorListener(new InspectionValue.OnErrorListener() {
-                    @Override
-                    public void setErrorEnabled(boolean enabled, String error) {
-                        if (!enabled)
-                            textView.setText("value1" + " " + "success");
-                        else
-                            textView.setText("value1" + " " + error);
-                    }
+                .addErrorListener((enabled, error) -> {
+                    if (!enabled)
+                        textView.setText("value1" + " " + "success");
+                    else
+                        textView.setText("value1" + " " + error);
                 }).build();
 
         InspectionValue<String> inspectionValue2 = new InspectValueBuilder<>("")
                 .addRule(new TextNotEmptyRule("ins2"))
-                .addErrorListener(new InspectionValue.OnErrorListener() {
-                    @Override
-                    public void setErrorEnabled(boolean enabled, String error) {
-                        if (!enabled)
-                            textView.append("value1" + " " + "success");
-                        else
-                            textView.append("value1" + " " + error);
-                    }
+                .addErrorListener((enabled, error) -> {
+                    if (!enabled)
+                        textView.append("value1" + " " + "success");
+                    else
+                        textView.append("value1" + " " + error);
                 }).build();
 
         InspectionValue<String> inspectionValue3 = new InspectValueBuilder<>("ss")

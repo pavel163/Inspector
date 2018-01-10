@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ebr163.inspector.Inspector;
-import com.ebr163.inspector.builder.TextInputLayoutInspectViewBuilder;
-import com.ebr163.inspector.inspection.InspectionView;
 import com.ebr163.inspector.rule.NotNullRule;
 import com.ebr163.inspector.rule.TextLengthRule;
 import com.ebr163.inspector.rule.TextNotEmptyRule;
 import com.ebr163.inspector.sample.R;
+import com.ebr163.inspector.view.InspectionView;
+import com.ebr163.inspector.view.TextInputLayoutInspectViewBuilder;
 
 /**
  * Created by Bakht

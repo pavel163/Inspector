@@ -1,4 +1,4 @@
-package com.ebr163.inspector.inspection;
+package com.ebr163.inspector;
 
 /**
  * Created by Bakht

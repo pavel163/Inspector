@@ -2,6 +2,8 @@ package com.ebr163.inspector.inspection;
 
 import android.util.Pair;
 
+import com.ebr163.inspector.AbstractInspection;
+import com.ebr163.inspector.Inspection;
 import com.ebr163.inspector.rule.Rule;
 
 import java.util.List;
@@ -17,8 +19,8 @@ public class InspectionPair<Type1, Type2> extends AbstractInspection<Pair<Type1,
     private Inspection<Type2> inspection2;
     private OnErrorListener<Type1, Type2> errorListener;
 
-    InspectionPair(Inspection<Type1> inspection1, Inspection<Type2> inspection2,
-                   List<Rule<Pair<Type1, Type2>>> rules, OnErrorListener<Type1, Type2> errorListener) {
+    public InspectionPair(Inspection<Type1> inspection1, Inspection<Type2> inspection2,
+                          List<Rule<Pair<Type1, Type2>>> rules, OnErrorListener<Type1, Type2> errorListener) {
         super(rules);
         this.inspection1 = inspection1;
         this.inspection2 = inspection2;

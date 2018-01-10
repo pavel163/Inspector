@@ -1,8 +1,6 @@
-package com.ebr163.inspector.builder;
+package com.ebr163.inspector.view;
 
 import android.support.design.widget.TextInputLayout;
-
-import com.ebr163.inspector.inspection.InspectionView;
 
 /**
  * Created by Bakht

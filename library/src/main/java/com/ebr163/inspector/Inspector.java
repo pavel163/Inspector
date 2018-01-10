@@ -4,8 +4,6 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 
-import com.ebr163.inspector.inspection.Inspection;
-
 import java.util.ArrayList;
 import java.util.List;
 

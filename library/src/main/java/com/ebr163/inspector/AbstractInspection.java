@@ -1,4 +1,4 @@
-package com.ebr163.inspector.inspection;
+package com.ebr163.inspector;
 
 import com.ebr163.inspector.rule.Rule;
 
@@ -11,9 +11,9 @@ import java.util.List;
 
 public abstract class AbstractInspection<Type> implements Inspection<Type> {
 
-    List<Rule<Type>> rules;
+    protected List<Rule<Type>> rules;
 
-    AbstractInspection(List<Rule<Type>> rules){
+    protected AbstractInspection(List<Rule<Type>> rules){
         this.rules = rules;
     }
 

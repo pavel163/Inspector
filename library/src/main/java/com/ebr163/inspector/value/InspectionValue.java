@@ -1,5 +1,6 @@
-package com.ebr163.inspector.inspection;
+package com.ebr163.inspector.value;
 
+import com.ebr163.inspector.AbstractInspection;
 import com.ebr163.inspector.rule.Rule;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class InspectionValue<Type> extends AbstractInspection<Type> {
     private Type value;
     private OnErrorListener errorListener;
 
-    public InspectionValue(Type value, List<Rule<Type>> rules, OnErrorListener errorListener) {
+    InspectionValue(Type value, List<Rule<Type>> rules, OnErrorListener errorListener) {
         super(rules);
         this.value = value;
         this.errorListener = errorListener;

@@ -1,7 +1,8 @@
-package com.ebr163.inspector.inspection;
+package com.ebr163.inspector.view;
 
 import android.view.View;
 
+import com.ebr163.inspector.AbstractInspection;
 import com.ebr163.inspector.rule.Rule;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class InspectionView<V extends View, Type> extends AbstractInspection<Typ
     private OnValueListener<V, Type> valueListener;
     private OnErrorListener<V> errorListener;
 
-    public InspectionView(V view, List<Rule<Type>> rules, OnValueListener<V, Type> valueListener, OnErrorListener<V> errorListener) {
+    InspectionView(V view, List<Rule<Type>> rules, OnValueListener<V, Type> valueListener, OnErrorListener<V> errorListener) {
         super(rules);
         this.view = view;
         this.valueListener = valueListener;
