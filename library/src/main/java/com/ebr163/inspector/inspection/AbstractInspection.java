@@ -9,7 +9,7 @@ import java.util.List;
  * on 09.01.2018.
  */
 
-public abstract class AbstractInspection<Type> implements Inspection {
+public abstract class AbstractInspection<Type> implements Inspection<Type> {
 
     List<Rule<Type>> rules;
 

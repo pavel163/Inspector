@@ -49,6 +49,20 @@ public class InspectionView<V extends View, Type> extends AbstractInspection<Typ
         return true;
     }
 
+    @Override
+    public Type getValue() {
+        return valueListener.getValue(view);
+    }
+
+    @Override
+    public void setErrorEnabled(boolean enabled, String error) {
+        if (enabled){
+            errorListener.setErrorEnabled(view, error, true);
+        } else {
+            errorListener.setErrorEnabled(view, null, false);
+        }
+    }
+
     public interface OnValueListener<V, Type> {
         Type getValue(V view);
     }

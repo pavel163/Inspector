@@ -42,6 +42,20 @@ public class InspectionValue<Type> extends AbstractInspection<Type> {
         return true;
     }
 
+    @Override
+    public Type getValue() {
+        return value;
+    }
+
+    @Override
+    public void setErrorEnabled(boolean enabled, String error) {
+        if (enabled){
+            errorListener.setErrorEnabled(true, error);
+        } else {
+            errorListener.setErrorEnabled(false, null);
+        }
+    }
+
     public interface OnErrorListener {
         void setErrorEnabled(boolean enabled, String error);
     }
