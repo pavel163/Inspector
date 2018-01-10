@@ -21,4 +21,11 @@
         android:layout_height="wrap_content"
         android:text="Value example" />
 
+    <Button
+        android:id="@+id/pairExample"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pair example" />
+
 </LinearLayout>

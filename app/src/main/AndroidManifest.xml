@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".value_example.ValueExampleActivity"></activity>
+        <activity android:name=".value_example.ValueExampleActivity" />
+        <activity android:name=".pair.PairExampleActivity"></activity>
     </application>
 
 </manifest>

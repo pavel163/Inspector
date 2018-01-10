@@ -29,25 +29,37 @@ public class InspectionPair<Type1, Type2> extends AbstractInspection<Pair<Type1,
 
     @Override
     public boolean inspect() {
-        if (errorListener != null) {
-            errorListener.setErrorEnabled(new Pair<>(inspection1, inspection2), false, null);
-        }
-
-        for (Rule<Pair<Type1, Type2>> rule : rules) {
-            if (!rule.verify(getValue())) {
-                if (errorListener != null) {
-                    errorListener.setErrorEnabled(new Pair<>(inspection1, inspection2), true, rule.errorMessage());
-                }
-                return false;
+        if (inspection1.inspect() & inspection2.inspect()) {
+            if (errorListener != null) {
+                errorListener.setErrorEnabled(new Pair<>(inspection1, inspection2), false, null);
             }
-        }
 
-        return true;
+            for (Rule<Pair<Type1, Type2>> rule : rules) {
+                if (!rule.verify(getValue())) {
+                    if (errorListener != null) {
+                        errorListener.setErrorEnabled(new Pair<>(inspection1, inspection2), true, rule.errorMessage());
+                    }
+                    return false;
+                }
+            }
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public Pair<Type1, Type2> getValue() {
         return new Pair<>(inspection1.getValue(), inspection2.getValue());
+    }
+
+    @Override
+    public void clear() {
+        super.clear();
+        inspection1 = null;
+        inspection2 = null;
+        errorListener = null;
     }
 
     @Override
