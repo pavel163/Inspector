@@ -29,6 +29,10 @@ public class InspectionValue<Type> extends AbstractInspection<Type> {
 
     @Override
     public boolean inspect() {
+        if (errorListener != null){
+            errorListener.setErrorEnabled(false, null);
+        }
+
         for (Rule<Type> rule : rules) {
             if (!rule.verify(value)) {
                 if (errorListener != null) {
@@ -38,7 +42,6 @@ public class InspectionValue<Type> extends AbstractInspection<Type> {
             }
         }
 
-        errorListener.setErrorEnabled(false, null);
         return true;
     }
 
