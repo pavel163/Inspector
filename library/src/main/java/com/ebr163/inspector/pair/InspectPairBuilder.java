@@ -1,9 +1,8 @@
-package com.ebr163.inspector.builder;
+package com.ebr163.inspector.pair;
 
 import android.util.Pair;
 
 import com.ebr163.inspector.Inspection;
-import com.ebr163.inspector.inspection.InspectionPair;
 import com.ebr163.inspector.rule.Rule;
 
 import java.util.ArrayList;
