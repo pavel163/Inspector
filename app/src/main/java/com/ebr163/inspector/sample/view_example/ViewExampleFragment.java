@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,8 @@ public class ViewExampleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        inspector.setInspectListener((isValid, values) -> Log.d("inspector", "values"));
+
         getView().findViewById(R.id.checkBtn).setOnClickListener(view1 -> inspector.inspect());
 
         TextInputLayout til1 = getView().findViewById(R.id.til1);
@@ -64,10 +67,10 @@ public class ViewExampleFragment extends Fragment {
                 .addRules(new TextNotEmptyRule("Поле 4 не должно быть пустым"), new TextLengthRule(5, TextLengthRule.TextLength.EQUAL, "Length is incorrect"))
                 .build();
 
-        inspector.addInspection(inspectionView1);
+        inspector.addInspection("key1", inspectionView1);
         inspector.addInspection(inspectionView2);
-        inspector.addInspection(inspectionView3);
-        inspector.addInspection(inspectionView4);
+        inspector.addInspection("key3", inspectionView3);
+        inspector.addInspection("key4", inspectionView4);
     }
 
     @Override
