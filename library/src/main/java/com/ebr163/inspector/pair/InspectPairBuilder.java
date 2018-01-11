@@ -44,11 +44,6 @@ public class InspectPairBuilder<Type1, Type2> {
     }
 
     public InspectionPair<Type1, Type2> build() {
-        InspectionPair<Type1, Type2> inspectionValue = new InspectionPair<>(inspection1, inspection2, rules, errorListener);
-        errorListener = null;
-        inspection1 = null;
-        inspection2 = null;
-        rules = null;
-        return inspectionValue;
+        return new InspectionPair<>(inspection1, inspection2, rules, errorListener);
     }
 }

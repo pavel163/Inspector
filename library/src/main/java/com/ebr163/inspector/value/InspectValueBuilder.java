@@ -39,10 +39,6 @@ public class InspectValueBuilder<Type> {
     }
 
     public InspectionValue<Type> build() {
-        InspectionValue<Type> inspectionValue = new InspectionValue<>(value, rules, errorListener);
-        errorListener = null;
-        value = null;
-        rules = null;
-        return inspectionValue;
+        return new InspectionValue<>(value, rules, errorListener);
     }
 }

@@ -57,14 +57,18 @@ public class InspectionPair<Type1, Type2> extends AbstractInspection<Pair<Type1,
     @Override
     public void clear() {
         super.clear();
-        inspection1 = null;
-        inspection2 = null;
+        inspection1.clear();
+        inspection2.clear();
         errorListener = null;
     }
 
     @Override
     public void setErrorEnabled(boolean enabled, String error) {
-
+        if (enabled) {
+            errorListener.setErrorEnabled(new Pair<>(inspection1, inspection2), true, error);
+        } else {
+            errorListener.setErrorEnabled(new Pair<>(inspection1, inspection2), false, null);
+        }
     }
 
     public interface OnErrorListener<Type1, Type2> {

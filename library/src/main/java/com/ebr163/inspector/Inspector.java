@@ -42,6 +42,7 @@ public class Inspector implements LifecycleObserver {
         for (Inspection inspection : inspectionList) {
             inspection.clear();
         }
+        inspectionList.clear();
     }
 
     public void addInspection(Inspection inspection) {

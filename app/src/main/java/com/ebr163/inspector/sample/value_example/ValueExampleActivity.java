@@ -13,12 +13,14 @@ import com.ebr163.inspector.value.InspectionValue;
 
 public class ValueExampleActivity extends AppCompatActivity {
 
+    private Inspector inspector;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_value_example);
         final TextView textView = findViewById(R.id.text);
-        final Inspector inspector = new Inspector(getLifecycle());
+        inspector = new Inspector(getLifecycle());
 
         InspectionValue<String> inspectionValue1 = new InspectValueBuilder<String>(null)
                 .addRule(new TextNotEmptyRule("ins1"))

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ebr163.inspector.Inspector;
-import com.ebr163.inspector.rule.NotNullRule;
 import com.ebr163.inspector.rule.TextLengthRule;
 import com.ebr163.inspector.rule.TextNotEmptyRule;
 import com.ebr163.inspector.sample.R;
@@ -30,6 +29,7 @@ public class ViewExampleFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+        inspector = new Inspector();
     }
 
     @Nullable
@@ -41,8 +41,6 @@ public class ViewExampleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        inspector = new Inspector();
-
         getView().findViewById(R.id.checkBtn).setOnClickListener(view1 -> inspector.inspect());
 
         TextInputLayout til1 = getView().findViewById(R.id.til1);
@@ -51,17 +49,14 @@ public class ViewExampleFragment extends Fragment {
         TextInputLayout til4 = getView().findViewById(R.id.til4);
 
         InspectionView<TextInputLayout, String> inspectionView1 = new TextInputLayoutInspectViewBuilder(til1)
-                .addRule(new NotNullRule<>("Поле 1 не должно быть null"))
                 .addRule(new TextNotEmptyRule("Поле 1 не должно быть пустым"))
                 .build();
 
         InspectionView<TextInputLayout, String> inspectionView2 = new TextInputLayoutInspectViewBuilder(til2)
-                .addRule(new NotNullRule<>("Поле 2 не должно быть null"))
                 .addRule(new TextNotEmptyRule("Поле 2 не должно быть пустым"))
                 .build();
 
         InspectionView<TextInputLayout, String> inspectionView3 = new TextInputLayoutInspectViewBuilder(til3)
-                .addRule(new NotNullRule<>("Поле 3 не должно быть null"))
                 .addRule(new TextNotEmptyRule("Поле 3 не должно быть пустым"))
                 .build();
 

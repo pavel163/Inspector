@@ -47,11 +47,6 @@ public class InspectViewBuilder<V extends View, Type> {
     }
 
     public InspectionView<V, Type> build() {
-        InspectionView<V, Type> inspectionView = new InspectionView<>(view, rules, valueListener, errorListener);
-        valueListener = null;
-        errorListener = null;
-        view = null;
-        rules = null;
-        return inspectionView;
+        return new InspectionView<>(view, rules, valueListener, errorListener);
     }
 }
