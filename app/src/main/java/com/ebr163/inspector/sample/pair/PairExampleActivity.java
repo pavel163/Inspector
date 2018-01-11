@@ -3,13 +3,12 @@ package com.ebr163.inspector.sample.pair;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.ebr163.inspector.Inspector;
 import com.ebr163.inspector.pair.InspectPairBuilder;
 import com.ebr163.inspector.pair.InspectionPair;
-import com.ebr163.inspector.rule.ConfirmPasswordRule;
 import com.ebr163.inspector.rule.TextNotEmptyRule;
+import com.ebr163.inspector.rule.pair.ConfirmPasswordRule;
 import com.ebr163.inspector.sample.R;
 import com.ebr163.inspector.view.InspectionView;
 import com.ebr163.inspector.view.TextInputLayoutInspectViewBuilder;
@@ -38,10 +37,7 @@ public class PairExampleActivity extends AppCompatActivity {
 
         InspectionPair<String, String> inspectionPair = new InspectPairBuilder<>(inspectionView1, inspectionView2)
                 .addRule(new ConfirmPasswordRule())
-                .addErrorListener((inspections, enabled, error) -> {
-                    inspections.second.setErrorEnabled(enabled, error);
-                    Toast.makeText(PairExampleActivity.this, "ds", Toast.LENGTH_SHORT).show();
-                }).build();
+                .addErrorListener((inspections, enabled, error) -> inspections.second.setErrorEnabled(enabled, error)).build();
 
         inspector.addInspection(inspectionPair);
     }

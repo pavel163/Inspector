@@ -1,6 +1,8 @@
-package com.ebr163.inspector.rule;
+package com.ebr163.inspector.rule.pair;
 
 import android.util.Pair;
+
+import com.ebr163.inspector.rule.Rule;
 
 /**
  * Created by Bakht
