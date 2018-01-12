@@ -11,7 +11,7 @@ public class TextLengthRule extends AbstractRule<String> {
     private final TextLength textLength;
 
     public enum TextLength {
-        MORE, LESS, EQUAL
+        MORE, LESS, EQUAL, MORE_OR_EQUAL, LESS_OR_EQUAL
     }
 
     public TextLengthRule(int length, TextLength textLength, String errorMessage) {
@@ -22,12 +22,20 @@ public class TextLengthRule extends AbstractRule<String> {
 
     @Override
     public boolean verify(String value) {
+        if (value == null) {
+            return false;
+        }
+
         if (textLength == TextLength.EQUAL) {
             return value.length() == length;
         } else if (textLength == TextLength.LESS) {
             return value.length() < length;
-        } else {
+        } else if (textLength == TextLength.MORE) {
             return value.length() > length;
+        } else if (textLength == TextLength.LESS_OR_EQUAL) {
+            return value.length() <= length;
+        } else {
+            return value.length() >= length;
         }
     }
 }
