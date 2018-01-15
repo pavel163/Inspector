@@ -4,7 +4,7 @@ Inspector is a simple and powerful rule-based UI form validation library for And
 
 Quick Start
 -----------
-**Step 1 - [init Inspector].**
+**Step 1 - init [Inspector].**
 ```java
 public class MainActivity extends Activity {
 
@@ -56,7 +56,7 @@ public void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-**Step 3 - add Inspection in Inspector**
+**Step 3 - add [Inspection] in [Inspector]**
 ```java
 @Override
 public void onCreate(Bundle savedInstanceState) {
@@ -81,7 +81,7 @@ button.setOnClickListener(new OnClickListener() {
     }
 });
 ```
-You can use the [OnInspectListener] to get the result of the check and the variables:
+You can use the OnInspectListener to get the result of the check and the variables:
 ```java
 inspector.setInspectListener(new Inspector.OnInspectListener() {
             @Override
@@ -94,5 +94,6 @@ inspector.setInspectListener(new Inspector.OnInspectListener() {
         });
 ```
 
-[init Inspector]: https://github.com/pavel163/Inspector/blob/master/app/src/main/java/com/ebr163/inspector/sample/value_example/ValueExampleActivity.java
-[OnInspectListener]: https://github.com/pavel163/Inspector/blob/master/app/src/main/java/com/ebr163/inspector/sample/view_example/ViewExampleFragment.java
+[Inspector]: https://github.com/pavel163/Inspector/blob/master/library/src/main/java/com/ebr163/inspector/Inspector.java
+[OnInspectListener]: https://github.com/pavel163/Inspector/blob/master/library/src/main/java/com/ebr163/inspector/Inspector.java
+[Inspection]: https://github.com/pavel163/Inspector/blob/master/library/src/main/java/com/ebr163/inspector/Inspection.java
