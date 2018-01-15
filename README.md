@@ -49,7 +49,7 @@ public void onCreate(Bundle savedInstanceState) {
                 .addRule(new TextNotEmptyRule("Поле 1 не должно быть пустым"))
                 .build();
                 
-    Inspection<String> inspectionValue = new InspectValueBuilder<>("ss")
+    Inspection<String> inspectionVariable = new InspectVariableBuilder<>("ss")
                 .addRule(new TextNotEmptyRule("ins3"))
                 .build();
     // More code…
@@ -63,10 +63,10 @@ public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     // Code…
     inspector.addInspection(inspectionView);
-    inspector.addInspection(inspectionValue);
+    inspector.addInspection(inspectionVariable);
     //or
     inspector.addInspection(KEY_1, inspectionView);
-    inspector.addInspection(KEY_2, inspectionValue);
+    inspector.addInspection(KEY_2, inspectionVariable);
 }
 ```
 
