@@ -81,7 +81,7 @@ button.setOnClickListener(new OnClickListener() {
     }
 });
 ```
-You can use the OnInspectListener to get the result of the check and the variables:
+You can use the [OnInspectListener] to get the result of the check and the variables:
 ```java
 inspector.setInspectListener(new Inspector.OnInspectListener() {
             @Override
@@ -93,6 +93,24 @@ inspector.setInspectListener(new Inspector.OnInspectListener() {
             }
         });
 ```
+## Gradle
+
+```gradle
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+```gradle
+dependencies {
+    implementation 'com.github.pavel163:Inspector:1.0.0'
+}
+```
+
+## License
+MIT
 
 [Inspector]: https://github.com/pavel163/Inspector/blob/master/library/src/main/java/com/ebr163/inspector/Inspector.java
 [OnInspectListener]: https://github.com/pavel163/Inspector/blob/master/library/src/main/java/com/ebr163/inspector/Inspector.java
