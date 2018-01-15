@@ -11,34 +11,34 @@ import java.util.List;
  * on 09.01.2018.
  */
 
-public class InspectValueBuilder<Type> {
+public class InspectVariableBuilder<Type> {
 
     private Type value;
     private List<Rule<Type>> rules;
-    private InspectionValue.OnErrorListener errorListener;
+    private InspectionVariable.OnErrorListener errorListener;
 
-    public InspectValueBuilder(Type value) {
+    public InspectVariableBuilder(Type value) {
         this.value = value;
         rules = new ArrayList<>();
     }
 
-    public InspectValueBuilder<Type> addRule(Rule<Type> rule) {
+    public InspectVariableBuilder<Type> addRule(Rule<Type> rule) {
         rules.add(rule);
         return this;
     }
 
     @SafeVarargs
-    public final InspectValueBuilder<Type> addRules(Rule<Type>... rules) {
+    public final InspectVariableBuilder<Type> addRules(Rule<Type>... rules) {
         Collections.addAll(this.rules, rules);
         return this;
     }
 
-    public InspectValueBuilder<Type> addErrorListener(InspectionValue.OnErrorListener errorListener) {
+    public InspectVariableBuilder<Type> addErrorListener(InspectionVariable.OnErrorListener errorListener) {
         this.errorListener = errorListener;
         return this;
     }
 
-    public InspectionValue<Type> build() {
-        return new InspectionValue<>(value, rules, errorListener);
+    public InspectionVariable<Type> build() {
+        return new InspectionVariable<>(value, rules, errorListener);
     }
 }

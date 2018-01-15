@@ -15,11 +15,11 @@
         android:text="View example" />
 
     <Button
-        android:id="@+id/valueExample"
+        android:id="@+id/variableExample"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Value example" />
+        android:text="Variable example" />
 
     <Button
         android:id="@+id/pairExample"

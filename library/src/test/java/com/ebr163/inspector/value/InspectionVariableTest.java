@@ -30,12 +30,12 @@ import static org.mockito.Mockito.verify;
  * on 11.01.2018.
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(InspectionValue.class)
-public class InspectionValueTest {
+@PrepareForTest(InspectionVariable.class)
+public class InspectionVariableTest {
 
-    private InspectionValue<String> inspectionValue;
+    private InspectionVariable<String> inspectionVariable;
     private String value = "test_value";
-    private InspectionValue.OnErrorListener errorListener;
+    private InspectionVariable.OnErrorListener errorListener;
     private Rule<String> rule1;
     private Rule<String> rule2;
 
@@ -43,18 +43,18 @@ public class InspectionValueTest {
     public void setUp() throws Exception {
         rule1 = Mockito.mock(TextNotEmptyRule.class);
         rule2 = Mockito.mock(TextNotEmptyRule.class);
-        errorListener = Mockito.mock(InspectionValue.OnErrorListener.class);
+        errorListener = Mockito.mock(InspectionVariable.OnErrorListener.class);
     }
 
     private void initWithErrorListener(){
-        inspectionValue = new InspectValueBuilder<>(value)
+        inspectionVariable = new InspectVariableBuilder<>(value)
                 .addErrorListener(errorListener)
                 .addRules(rule1, rule2)
                 .build();
     }
 
     private void initWithoutErrorListener(){
-        inspectionValue = new InspectValueBuilder<>(value)
+        inspectionVariable = new InspectVariableBuilder<>(value)
                 .addRules(rule1, rule2)
                 .build();
     }
@@ -63,11 +63,11 @@ public class InspectionValueTest {
     public void clear() throws Exception {
         initWithErrorListener();
 
-        inspectionValue.clear();
+        inspectionVariable.clear();
 
-        assertTrue(((List) Whitebox.getInternalState(inspectionValue, "rules")).isEmpty());
-        assertNull(Whitebox.getInternalState(inspectionValue, "errorListener"));
-        assertNull(Whitebox.getInternalState(inspectionValue, "value"));
+        assertTrue(((List) Whitebox.getInternalState(inspectionVariable, "rules")).isEmpty());
+        assertNull(Whitebox.getInternalState(inspectionVariable, "errorListener"));
+        assertNull(Whitebox.getInternalState(inspectionVariable, "value"));
     }
 
     @Test
@@ -77,7 +77,7 @@ public class InspectionValueTest {
         doReturn(true).when(rule1).verify(anyString());
         doReturn(true).when(rule2).verify(anyString());
 
-        boolean result = inspectionValue.inspect();
+        boolean result = inspectionVariable.inspect();
 
         assertTrue(result);
         verify(errorListener).setErrorEnabled(false, null);
@@ -90,7 +90,7 @@ public class InspectionValueTest {
         doReturn(true).when(rule1).verify(anyString());
         doReturn(true).when(rule2).verify(anyString());
 
-        boolean result = inspectionValue.inspect();
+        boolean result = inspectionVariable.inspect();
 
         assertTrue(result);
         verify(errorListener, never()).setErrorEnabled(false, null);
@@ -103,7 +103,7 @@ public class InspectionValueTest {
         doReturn(false).when(rule1).verify(anyString());
         doReturn(true).when(rule2).verify(anyString());
 
-        boolean result = inspectionValue.inspect();
+        boolean result = inspectionVariable.inspect();
 
         assertFalse(result);
         verify(errorListener).setErrorEnabled(false, null);
@@ -117,7 +117,7 @@ public class InspectionValueTest {
         doReturn(false).when(rule1).verify(anyString());
         doReturn(true).when(rule2).verify(anyString());
 
-        boolean result = inspectionValue.inspect();
+        boolean result = inspectionVariable.inspect();
 
         assertFalse(result);
         verify(errorListener, never()).setErrorEnabled(anyBoolean(), (String) any());
@@ -127,14 +127,14 @@ public class InspectionValueTest {
     public void getValue() throws Exception {
         initWithErrorListener();
 
-        assertEquals(value, inspectionValue.getValue());
+        assertEquals(value, inspectionVariable.getValue());
     }
 
     @Test
     public void setErrorEnabled_With_ErrorListener() throws Exception {
         initWithErrorListener();
 
-        inspectionValue.setErrorEnabled(true, "test");
+        inspectionVariable.setErrorEnabled(true, "test");
 
         verify(errorListener).setErrorEnabled(true, "test");
     }
@@ -143,6 +143,6 @@ public class InspectionValueTest {
     public void setErrorEnabled_Without_ErrorListener() throws Exception {
         initWithoutErrorListener();
 
-        inspectionValue.setErrorEnabled(true, "test");
+        inspectionVariable.setErrorEnabled(true, "test");
     }
 }

@@ -10,12 +10,12 @@ import java.util.List;
  * on 09.01.2018.
  */
 
-public class InspectionValue<Type> extends AbstractInspection<Type> {
+public class InspectionVariable<Type> extends AbstractInspection<Type> {
 
     private Type value;
     private OnErrorListener errorListener;
 
-    InspectionValue(Type value, List<Rule<Type>> rules, OnErrorListener errorListener) {
+    InspectionVariable(Type value, List<Rule<Type>> rules, OnErrorListener errorListener) {
         super(rules);
         this.value = value;
         this.errorListener = errorListener;

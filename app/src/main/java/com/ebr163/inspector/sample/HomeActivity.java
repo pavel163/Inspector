@@ -15,7 +15,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         findViewById(R.id.viewExample).setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, ViewExampleActivity.class)));
-        findViewById(R.id.valueExample).setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, ValueExampleActivity.class)));
+        findViewById(R.id.variableExample).setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, ValueExampleActivity.class)));
         findViewById(R.id.pairExample).setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, PairExampleActivity.class)));
     }
 }

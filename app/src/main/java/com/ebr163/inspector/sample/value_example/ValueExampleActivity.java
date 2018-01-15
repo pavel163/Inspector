@@ -9,7 +9,7 @@ import com.ebr163.inspector.Inspection;
 import com.ebr163.inspector.Inspector;
 import com.ebr163.inspector.rule.TextNotEmptyRule;
 import com.ebr163.inspector.sample.R;
-import com.ebr163.inspector.value.InspectValueBuilder;
+import com.ebr163.inspector.value.InspectVariableBuilder;
 
 public class ValueExampleActivity extends AppCompatActivity {
 
@@ -22,7 +22,7 @@ public class ValueExampleActivity extends AppCompatActivity {
         final TextView textView = findViewById(R.id.text);
         inspector = new Inspector(getLifecycle());
 
-        Inspection<String> inspectionValue1 = new InspectValueBuilder<String>(null)
+        Inspection<String> inspectionVariable1 = new InspectVariableBuilder<String>(null)
                 .addRule(new TextNotEmptyRule("ins1"))
                 .addErrorListener((enabled, error) -> {
                     if (!enabled)
@@ -31,7 +31,7 @@ public class ValueExampleActivity extends AppCompatActivity {
                         textView.setText("value1" + " " + error);
                 }).build();
 
-        Inspection<String> inspectionValue2 = new InspectValueBuilder<>("")
+        Inspection<String> inspectionVariable2 = new InspectVariableBuilder<>("")
                 .addRule(new TextNotEmptyRule("ins2"))
                 .addErrorListener((enabled, error) -> {
                     if (!enabled)
@@ -40,13 +40,13 @@ public class ValueExampleActivity extends AppCompatActivity {
                         textView.append("value1" + " " + error);
                 }).build();
 
-        Inspection<String> inspectionValue3 = new InspectValueBuilder<>("ss")
+        Inspection<String> inspectionVariable3 = new InspectVariableBuilder<>("ss")
                 .addRule(new TextNotEmptyRule("ins3"))
                 .build();
 
-        inspector.addInspection(inspectionValue1);
-        inspector.addInspection(inspectionValue2);
-        inspector.addInspection(inspectionValue3);
+        inspector.addInspection(inspectionVariable1);
+        inspector.addInspection(inspectionVariable2);
+        inspector.addInspection(inspectionVariable3);
 
         findViewById(R.id.check).setOnClickListener(view -> Log.d("result", String.valueOf(inspector.inspect())));
     }
