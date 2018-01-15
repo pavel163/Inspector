@@ -9,7 +9,7 @@ import com.ebr163.inspector.Inspection;
 import com.ebr163.inspector.Inspector;
 import com.ebr163.inspector.rule.TextNotEmptyRule;
 import com.ebr163.inspector.sample.R;
-import com.ebr163.inspector.value.InspectVariableBuilder;
+import com.ebr163.inspector.variable.InspectVariableBuilder;
 
 public class ValueExampleActivity extends AppCompatActivity {
 

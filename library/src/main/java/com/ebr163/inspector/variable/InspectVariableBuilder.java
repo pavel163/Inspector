@@ -1,4 +1,4 @@
-package com.ebr163.inspector.value;
+package com.ebr163.inspector.variable;
 
 import com.ebr163.inspector.rule.Rule;
 
