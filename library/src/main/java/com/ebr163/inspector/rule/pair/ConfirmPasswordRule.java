@@ -11,7 +11,7 @@ import com.ebr163.inspector.rule.AbstractRule;
 
 public class ConfirmPasswordRule extends AbstractRule<Pair<String, String>> {
 
-    protected ConfirmPasswordRule(String errorMessage) {
+    public ConfirmPasswordRule(String errorMessage) {
         super(errorMessage);
     }
 

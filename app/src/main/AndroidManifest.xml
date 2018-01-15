@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".value_example.ValueExampleActivity" />
-        <activity android:name=".pair.PairExampleActivity"/>
+        <activity android:name=".pair.PairExampleActivity" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
