@@ -2,6 +2,14 @@
 
 Inspector is a simple and powerful rule-based UI form validation library for Android.
 
+Why Inspector?
+---------------------
+
+ - Works with any view.
+ - Isolates validation logic using rules.
+ - Extensible. You can create your own rules.
+ - Checking dependent fields
+
 Quick Start
 -----------
 **Step 1 - init [Inspector].**
@@ -93,6 +101,10 @@ inspector.setInspectListener(new Inspector.OnInspectListener() {
             }
         });
 ```
+Wiki
+---------------------
+Please visit the [wiki] for a complete guide on Inspector.
+
 ## Gradle
 
 ```gradle
@@ -105,7 +117,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.pavel163:Inspector:1.0.0'
+    implementation 'com.github.pavel163:Inspector:1.0.1'
 }
 ```
 
@@ -115,3 +127,4 @@ MIT
 [Inspector]: https://github.com/pavel163/Inspector/blob/master/library/src/main/java/com/ebr163/inspector/Inspector.java
 [OnInspectListener]: https://github.com/pavel163/Inspector/blob/master/library/src/main/java/com/ebr163/inspector/Inspector.java
 [Inspection]: https://github.com/pavel163/Inspector/blob/master/library/src/main/java/com/ebr163/inspector/Inspection.java
+[wiki]: https://github.com/pavel163/Inspector/wiki
