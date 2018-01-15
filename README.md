@@ -87,12 +87,12 @@ inspector.setInspectListener(new Inspector.OnInspectListener() {
             @Override
             public void onInspect(boolean isValid, Map<String, Object> values) {
                 if (isValid){
-                    presenter.setValues(values.get(KEY_1));
-                    presenter.setValues(values.get(KEY_2));
+                    presenter.setKey1(values.get(KEY_1));
+                    presenter.setKey2(values.get(KEY_2));
                 }
             }
         });
 ```
 
 [init Inspector]: https://github.com/pavel163/Inspector/blob/master/app/src/main/java/com/ebr163/inspector/sample/value_example/ValueExampleActivity.java
-[OnInspectListener] https://github.com/pavel163/Inspector/blob/master/app/src/main/java/com/ebr163/inspector/sample/view_example/ViewExampleFragment.java
+[OnInspectListener]: https://github.com/pavel163/Inspector/blob/master/app/src/main/java/com/ebr163/inspector/sample/view_example/ViewExampleFragment.java
