@@ -117,7 +117,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.pavel163:Inspector:1.0.1'
+    implementation 'com.github.pavel163:Inspector:1.0.2'
 }
 ```
 
