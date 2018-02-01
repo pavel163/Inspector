@@ -53,6 +53,8 @@ public class ViewExampleFragment extends Fragment {
 
         Inspection<String> inspectionView1 = new TextInputLayoutInspectViewBuilder(til1)
                 .addRule(new TextNotEmptyRule("Поле 1 не должно быть пустым"))
+                .addRule(new TextLengthRule(5, TextLengthRule.TextLength.EQUAL, "error"))
+                .checkAfterLostFocus(new TextNotEmptyRule(null), R.id.ed1)
                 .build();
 
         Inspection<String> inspectionView2 = new TextInputLayoutInspectViewBuilder(til2)

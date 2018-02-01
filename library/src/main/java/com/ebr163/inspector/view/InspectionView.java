@@ -17,17 +17,52 @@ public class InspectionView<V extends View, Type> extends AbstractInspection<Typ
     private V view;
     private OnValueListener<V, Type> valueListener;
     private OnErrorListener<V> errorListener;
+    private View.OnFocusChangeListener currentFocusChangeListener;
+    private int viewId;
 
-    InspectionView(V view, List<Rule<Type>> rules, OnValueListener<V, Type> valueListener, OnErrorListener<V> errorListener) {
+    InspectionView(V view, List<Rule<Type>> rules,
+                   OnValueListener<V, Type> valueListener, OnErrorListener<V> errorListener,
+                   boolean enabledCheckAfterLostFocus, final Rule<Type> ruleForStartCheckAfterLostFocus, int viewId) {
         super(rules);
         this.view = view;
         this.valueListener = valueListener;
         this.errorListener = errorListener;
+        this.viewId = viewId;
+
+        if (enabledCheckAfterLostFocus) {
+            View view1;
+            if (viewId == -1){
+                view1 = view;
+            } else {
+                view1 = view.findViewById(viewId);
+            }
+
+            currentFocusChangeListener = view1.getOnFocusChangeListener();
+            view1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean hasFocus) {
+                    if (currentFocusChangeListener != null){
+                        currentFocusChangeListener.onFocusChange(view, hasFocus);
+                    }
+                    if (!hasFocus) {
+                        if (ruleForStartCheckAfterLostFocus == null || ruleForStartCheckAfterLostFocus.verify(getValue())) {
+                            inspect();
+                        }
+                    }
+                }
+            });
+        }
     }
 
     @Override
     public void clear() {
         super.clear();
+        currentFocusChangeListener = null;
+        if (viewId != -1){
+            view.findViewById(viewId).setOnFocusChangeListener(null);
+        } else {
+            view.setOnFocusChangeListener(null);
+        }
         view = null;
         valueListener = null;
         errorListener = null;
@@ -57,7 +92,7 @@ public class InspectionView<V extends View, Type> extends AbstractInspection<Typ
 
     @Override
     public void setErrorEnabled(boolean enabled, String error) {
-        if (enabled){
+        if (enabled) {
             errorListener.setErrorEnabled(view, error, true);
         } else {
             errorListener.setErrorEnabled(view, null, false);

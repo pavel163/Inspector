@@ -19,6 +19,9 @@ public class InspectViewBuilder<V extends View, Type> {
     private List<Rule<Type>> rules;
     private InspectionView.OnValueListener<V, Type> valueListener;
     private InspectionView.OnErrorListener<V> errorListener;
+    private boolean enabledCheckAfterLostFocus;
+    private Rule<Type> ruleForStartCheckAfterLostFocus;
+    private int viewId = -1;
 
     public InspectViewBuilder(V view) {
         this.view = view;
@@ -46,7 +49,24 @@ public class InspectViewBuilder<V extends View, Type> {
         return this;
     }
 
+    public InspectViewBuilder<V, Type> checkAfterLostFocus() {
+        return checkAfterLostFocus(null);
+    }
+
+    public InspectViewBuilder<V, Type> checkAfterLostFocus(Rule<Type> ruleForStartCheck) {
+        return checkAfterLostFocus(ruleForStartCheck, -1);
+    }
+
+    public InspectViewBuilder<V, Type> checkAfterLostFocus(Rule<Type> ruleForStartCheck, int viewId) {
+        enabledCheckAfterLostFocus = true;
+        this.ruleForStartCheckAfterLostFocus = ruleForStartCheck;
+        this.viewId = viewId;
+        return this;
+    }
+
     public InspectionView<V, Type> build() {
-        return new InspectionView<>(view, rules, valueListener, errorListener);
+        return new InspectionView<>(view, rules, valueListener,
+                errorListener, enabledCheckAfterLostFocus, ruleForStartCheckAfterLostFocus,
+                viewId);
     }
 }
