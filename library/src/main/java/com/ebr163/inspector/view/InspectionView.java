@@ -41,13 +41,11 @@ public class InspectionView<V extends View, Type> extends AbstractInspection<Typ
             view1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View view, boolean hasFocus) {
+                    if (!hasFocus && (ruleForStartCheckAfterLostFocus == null || ruleForStartCheckAfterLostFocus.verify(getValue()))) {
+                        inspect();
+                    }
                     if (currentFocusChangeListener != null){
                         currentFocusChangeListener.onFocusChange(view, hasFocus);
-                    }
-                    if (!hasFocus) {
-                        if (ruleForStartCheckAfterLostFocus == null || ruleForStartCheckAfterLostFocus.verify(getValue())) {
-                            inspect();
-                        }
                     }
                 }
             });
