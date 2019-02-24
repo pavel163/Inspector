@@ -5,6 +5,8 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.ebr163.inspector.Inspector
 import com.ebr163.inspector.rule.TextNotEmptyRule
+import com.ebr163.inspector.variable.InspectionVariable
+import com.ebr163.inspector.variable.inspectionVariable
 import com.ebr163.inspector.view.InspectViewBuilder
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +27,14 @@ class MainActivity : AppCompatActivity() {
                     //do something
                 }
                 .build()
+
+        val inspection: InspectionVariable<String> = inspectionVariable {
+            value = "Test"
+            rule(TextNotEmptyRule(""))
+            onErrorListener { enabled, errorMessage ->
+                // do something
+            }
+        }
     }
 
     override fun onDestroy() {
