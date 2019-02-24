@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion project.ext.targetSdkVersion
@@ -28,4 +29,6 @@ dependencies {
     // arch
     implementation "androidx.lifecycle:lifecycle-runtime:$project.ext.lifecycle"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$project.ext.lifecycle"
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

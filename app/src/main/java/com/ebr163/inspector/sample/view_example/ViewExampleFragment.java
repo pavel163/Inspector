@@ -1,7 +1,6 @@
 package com.ebr163.inspector.sample.view_example;
 
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +31,7 @@ public class ViewExampleFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        inspector = new Inspector();
+        inspector = new Inspector(this.getLifecycle());
     }
 
     @Nullable
@@ -44,7 +43,10 @@ public class ViewExampleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        inspector.setInspectListener((isValid, values) -> Log.d("inspector", "values"));
+        inspector.setInspectListener((aBoolean, stringMap) -> {
+            Log.d("inspector", "values");
+            return null;
+        });
 
         getView().findViewById(R.id.checkBtn).setOnClickListener(view1 -> inspector.inspect());
 
@@ -56,7 +58,7 @@ public class ViewExampleFragment extends Fragment {
         Inspection<String> inspectionView1 = new TextInputLayoutInspectViewBuilder(til1)
                 .addRule(new TextNotEmptyRule("Поле 1 не должно быть пустым"))
                 .addRule(new TextLengthRule(5, TextLengthRule.TextLength.EQUAL, "error"))
-                .checkAfterLostFocus(new TextNotEmptyRule(null), R.id.ed1)
+                .checkAfterLostFocus(new TextNotEmptyRule(""), R.id.ed1)
                 .build();
 
         Inspection<String> inspectionView2 = new TextInputLayoutInspectViewBuilder(til2)

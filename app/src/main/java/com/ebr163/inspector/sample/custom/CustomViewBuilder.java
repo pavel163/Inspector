@@ -15,7 +15,5 @@ public class CustomViewBuilder extends InspectViewBuilder<EditText, String> {
         super(view);
         addValueListener(view1 -> null);
 
-        addErrorListener((view12, error, enabled) -> {
-        });
     }
 }

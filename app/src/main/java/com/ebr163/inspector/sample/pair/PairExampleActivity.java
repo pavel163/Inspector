@@ -38,7 +38,10 @@ public class PairExampleActivity extends AppCompatActivity {
 
         Inspection<Pair<String, String>> inspectionPair = new InspectPairBuilder<>(inspectionView1, inspectionView2)
                 .addRule(new ConfirmPasswordRule("error"))
-                .addErrorListener((inspections, enabled, error) -> inspections.second.setErrorEnabled(enabled, error))
+                .addErrorListener((inspections, enabled, error) -> {
+                    inspections.second.setErrorEnabled(enabled, error);
+                    return null;
+                })
                 .build();
 
         inspector.addInspection(inspectionPair);

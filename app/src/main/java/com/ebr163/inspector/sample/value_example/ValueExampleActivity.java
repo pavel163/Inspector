@@ -30,6 +30,7 @@ public class ValueExampleActivity extends AppCompatActivity {
                         textView.setText("value1" + " " + "success");
                     else
                         textView.setText("value1" + " " + error);
+                    return null;
                 }).build();
 
         Inspection<String> inspectionVariable2 = new InspectVariableBuilder<>("")
@@ -39,6 +40,7 @@ public class ValueExampleActivity extends AppCompatActivity {
                         textView.append("value1" + " " + "success");
                     else
                         textView.append("value1" + " " + error);
+                    return null;
                 }).build();
 
         Inspection<String> inspectionVariable3 = new InspectVariableBuilder<>("ss")
