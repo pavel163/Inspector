@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.3.1'
     }
 }
 
@@ -16,9 +16,14 @@ allprojects {
     }
 
     project.ext {
-        targetSdkVersion = 27
-        buildToolsVersion = "27.0.3"
-        appcompat = "27.0.2"
+        targetSdkVersion = 28
+        buildToolsVersion = "28.0.3"
+        androidX = "1.1.0-alpha02"
+        material = "1.1.0-alpha03"
+        testRunner = "1.1.0"
+        espressoCore = "3.1.0"
+        lifecycle = "2.1.0-alpha02"
+        constrainLayout = "1.1.3"
     }
 }
 

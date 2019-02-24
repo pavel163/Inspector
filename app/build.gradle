@@ -25,16 +25,16 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:$project.ext.appcompat"
-    implementation "com.android.support:design:$project.ext.appcompat"
+    implementation "androidx.appcompat:appcompat:$project.ext.androidX"
+    implementation "com.google.android.material:material:$project.ext.material"
+    implementation "androidx.constraintlayout:constraintlayout:$project.ext.constrainLayout"
     //test
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation "androidx.test:runner:$project.ext.testRunner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$project.ext.espressoCore"
     //library
     implementation project(':library')
     //other
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
 }

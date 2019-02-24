@@ -1,8 +1,6 @@
 package com.ebr163.inspector.sample.pair;
 
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
 
 import com.ebr163.inspector.Inspection;
@@ -12,6 +10,9 @@ import com.ebr163.inspector.rule.TextNotEmptyRule;
 import com.ebr163.inspector.rule.pair.ConfirmPasswordRule;
 import com.ebr163.inspector.sample.R;
 import com.ebr163.inspector.view.TextInputLayoutInspectViewBuilder;
+import com.google.android.material.textfield.TextInputLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class PairExampleActivity extends AppCompatActivity {
 

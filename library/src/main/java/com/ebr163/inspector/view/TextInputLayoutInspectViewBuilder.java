@@ -1,6 +1,7 @@
 package com.ebr163.inspector.view;
 
-import android.support.design.widget.TextInputLayout;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 /**
  * Created by Bakht

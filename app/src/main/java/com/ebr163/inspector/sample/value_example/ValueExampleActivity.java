@@ -1,7 +1,6 @@
 package com.ebr163.inspector.sample.value_example;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -10,6 +9,8 @@ import com.ebr163.inspector.Inspector;
 import com.ebr163.inspector.rule.TextNotEmptyRule;
 import com.ebr163.inspector.sample.R;
 import com.ebr163.inspector.variable.InspectVariableBuilder;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ValueExampleActivity extends AppCompatActivity {
 
