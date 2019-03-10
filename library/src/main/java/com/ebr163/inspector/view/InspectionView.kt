@@ -13,11 +13,11 @@ import com.ebr163.inspector.rule.Rule
 class InspectionView<V : View, Type>(
         private var view: V?,
         rules: MutableList<Rule<Type>>,
-        private var valueListener: ((view: V) -> Type)?,
+        private var valueListener: ((view: V) -> Type?)?,
         private var errorListener: ((view: V?, error: String?, enabled: Boolean) -> Unit)?,
         enabledCheckAfterLostFocus: Boolean,
         ruleForStartCheckAfterLostFocus: Rule<Type>?,
-        private val viewId: Int = -1
+        private val viewId: Int
 ) : AbstractInspection<Type>(rules) {
 
     private var currentFocusChangeListener: View.OnFocusChangeListener? = null

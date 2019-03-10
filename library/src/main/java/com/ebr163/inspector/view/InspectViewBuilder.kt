@@ -4,7 +4,6 @@ import android.view.View
 
 import com.ebr163.inspector.rule.Rule
 
-import java.util.ArrayList
 import java.util.Collections
 
 /**
@@ -15,7 +14,7 @@ import java.util.Collections
 open class InspectViewBuilder<V : View, Type>(private val view: V) {
 
     private val rules: MutableList<Rule<Type>> = mutableListOf()
-    private var valueListener: ((view: V) -> Type)? = null
+    private var valueListener: ((view: V) -> Type?)? = null
     private var errorListener: ((view: V?, error: String?, enabled: Boolean) -> Unit)? = null
     private var enabledCheckAfterLostFocus: Boolean = false
     private var ruleForStartCheckAfterLostFocus: Rule<Type>? = null
@@ -32,7 +31,7 @@ open class InspectViewBuilder<V : View, Type>(private val view: V) {
         return this
     }
 
-    fun addValueListener(valueListener: (view: V) -> Type): InspectViewBuilder<V, Type> {
+    fun addValueListener(valueListener: (view: V) -> Type?): InspectViewBuilder<V, Type> {
         this.valueListener = valueListener
         return this
     }

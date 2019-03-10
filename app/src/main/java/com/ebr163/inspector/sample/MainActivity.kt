@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
                 // do something
             }
         }
+        inspector?.addInspection(inspection)
     }
 
     override fun onDestroy() {
