@@ -13,5 +13,5 @@ interface Inspection<Type> {
 
     fun inspect(): Boolean
 
-    fun setErrorEnabled(enabled: Boolean, error: String)
+    fun setErrorEnabled(showError: Boolean, errorMessage: String?)
 }

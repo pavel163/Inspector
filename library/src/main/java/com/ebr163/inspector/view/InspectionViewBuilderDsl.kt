@@ -2,7 +2,6 @@ package com.ebr163.inspector.view
 
 import android.view.View
 import com.ebr163.inspector.rule.Rule
-import com.ebr163.inspector.rule.RuleBuilderDsl
 
 
 class InspectionViewBuilderDsl<V : View, Type> {
@@ -17,11 +16,11 @@ class InspectionViewBuilderDsl<V : View, Type> {
 
     fun rule(rule: Rule<Type>) = rules.add(rule)
 
-    fun rule(init: RuleBuilderDsl<Type>.() -> Unit) {
-        val ruleBuilderDsl = RuleBuilderDsl<Type>()
-        ruleBuilderDsl.init()
-        rules.add(ruleBuilderDsl.build())
-    }
+//    fun rule(init: RuleBuilderDsl<Type>.() -> Unit) {
+//        val ruleBuilderDsl = RuleBuilderDsl<Type>()
+//        ruleBuilderDsl.init()
+//        rules.add(ruleBuilderDsl.build())
+//    }
 
     fun onErrorListener(errorListener: (view: V?, error: String?, enabled: Boolean) -> Unit) {
         this.errorListener = errorListener
@@ -31,13 +30,18 @@ class InspectionViewBuilderDsl<V : View, Type> {
         this.valueListener = valueListener
     }
 
-    fun build(): InspectionView<V, Type> = InspectionView(
-            view,
-            rules,
-            valueListener,
-            errorListener,
-            enabledCheckAfterLostFocus,
-            ruleForStartCheckAfterLostFocus,
-            focusableViewId
-    )
+    fun build(): InspectionView<V, Type> {
+        if (view == null){
+            throw IllegalArgumentException("view must not be null")
+        }
+        return InspectionView(
+                view,
+                rules,
+                valueListener,
+                errorListener,
+                enabledCheckAfterLostFocus,
+                ruleForStartCheckAfterLostFocus,
+                focusableViewId
+        )
+    }
 }

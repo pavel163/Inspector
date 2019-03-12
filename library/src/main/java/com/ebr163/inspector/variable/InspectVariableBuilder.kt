@@ -2,7 +2,7 @@ package com.ebr163.inspector.variable
 
 
 import com.ebr163.inspector.rule.Rule
-import java.util.*
+import java.util.Collections
 
 /**
  * Created by Bakht
@@ -10,6 +10,7 @@ import java.util.*
  */
 
 class InspectVariableBuilder<Type>(private val value: Type?) {
+
     private val rules: MutableList<Rule<Type>> = mutableListOf()
     private var errorListener: ((enabled: Boolean, errorMessage: String?) -> Unit)? = null
 
@@ -24,7 +25,7 @@ class InspectVariableBuilder<Type>(private val value: Type?) {
         return this
     }
 
-    fun addErrorListener(errorListener: ((Boolean, String?) -> Unit)?): InspectVariableBuilder<Type> {
+    fun addErrorListener(errorListener: (Boolean, String?) -> Unit): InspectVariableBuilder<Type> {
         this.errorListener = errorListener
         return this
     }

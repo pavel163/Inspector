@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Inspector</string>
+
+    <string name="field_is_empty">Field %d is empty</string>
+    <string name="confirm_error">Field %d and field %d are not equals</string>
+    <string name="error">Error</string>
+    <string name="field_length_incorrect">Length is incorrect</string>
 </resources>

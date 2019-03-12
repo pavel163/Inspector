@@ -14,10 +14,10 @@ class InspectionView<V : View, Type>(
         private var view: V?,
         rules: MutableList<Rule<Type>>,
         private var valueListener: ((view: V) -> Type?)?,
-        private var errorListener: ((view: V?, error: String?, enabled: Boolean) -> Unit)?,
+        private var errorListener: ((view: V?, error: String?, showError: Boolean) -> Unit)?,
         enabledCheckAfterLostFocus: Boolean,
         ruleForStartCheckAfterLostFocus: Rule<Type>?,
-        private val viewId: Int
+        viewId: Int
 ) : AbstractInspection<Type>(rules) {
 
     private var currentFocusChangeListener: View.OnFocusChangeListener? = null
@@ -48,11 +48,6 @@ class InspectionView<V : View, Type>(
     override fun clear() {
         super.clear()
         currentFocusChangeListener = null
-        if (viewId != -1) {
-            view!!.findViewById<View>(viewId).onFocusChangeListener = null
-        } else {
-            view!!.onFocusChangeListener = null
-        }
         view = null
         valueListener = null
         errorListener = null
@@ -61,7 +56,7 @@ class InspectionView<V : View, Type>(
     override fun inspect(): Boolean {
         errorListener?.invoke(view, null, false)
 
-        for (rule in rules) {
+        rules.forEach { rule ->
             if (!rule.verify(valueListener?.invoke(view!!))) {
                 errorListener?.invoke(view, rule.errorMessage(), true)
                 return false
@@ -70,19 +65,11 @@ class InspectionView<V : View, Type>(
         return true
     }
 
-    override fun setErrorEnabled(enabled: Boolean, error: String) {
-        if (enabled) {
-            errorListener?.invoke(view, error, true)
+    override fun setErrorEnabled(showError: Boolean, errorMessage: String?) {
+        if (showError) {
+            errorListener?.invoke(view, errorMessage, true)
         } else {
             errorListener?.invoke(view, null, false)
         }
-    }
-
-    interface OnValueListener<V, Type> {
-        fun getValue(view: V?): Type
-    }
-
-    interface OnErrorListener<V> {
-        fun setErrorEnabled(view: V?, error: String?, enabled: Boolean)
     }
 }

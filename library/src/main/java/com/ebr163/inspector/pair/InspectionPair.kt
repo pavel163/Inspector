@@ -25,7 +25,7 @@ class InspectionPair<Type1, Type2>(
         if (inspection1.inspect() && inspection2.inspect()) {
             errorListener?.invoke(Pair(inspection1, inspection2), false, null)
 
-            for (rule in rules) {
+            rules.forEach { rule ->
                 if (!rule.verify(value)) {
                     errorListener?.invoke(Pair(inspection1, inspection2), true, rule.errorMessage())
                     return false
@@ -45,15 +45,11 @@ class InspectionPair<Type1, Type2>(
         errorListener = null
     }
 
-    override fun setErrorEnabled(enabled: Boolean, error: String) {
-        if (enabled) {
-            errorListener?.invoke(Pair(inspection1, inspection2), true, error)
+    override fun setErrorEnabled(showError: Boolean, errorMessage: String?) {
+        if (showError) {
+            errorListener?.invoke(Pair(inspection1, inspection2), true, errorMessage)
         } else {
             errorListener?.invoke(Pair(inspection1, inspection2), false, null)
         }
-    }
-
-    interface OnErrorListener<Type1, Type2> {
-        fun setErrorEnabled(inspections: Pair<Inspection<Type1>, Inspection<Type2>>, enabled: Boolean, error: String?)
     }
 }

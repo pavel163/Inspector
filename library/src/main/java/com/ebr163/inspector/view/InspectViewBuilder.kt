@@ -1,9 +1,7 @@
 package com.ebr163.inspector.view
 
 import android.view.View
-
 import com.ebr163.inspector.rule.Rule
-
 import java.util.Collections
 
 /**

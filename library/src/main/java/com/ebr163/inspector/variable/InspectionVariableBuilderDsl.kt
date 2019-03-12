@@ -11,11 +11,11 @@ class InspectionVariableBuilderDsl<Type> {
 
     fun rule(rule: Rule<Type>) = rules.add(rule)
 
-    fun rule(init: RuleBuilderDsl<Type>.() -> Unit) {
-        val ruleBuilderDsl = RuleBuilderDsl<Type>()
-        ruleBuilderDsl.init()
-        rules.add(ruleBuilderDsl.build())
-    }
+//    fun rule(init: RuleBuilderDsl<Type>.() -> Unit) {
+//        val ruleBuilderDsl = RuleBuilderDsl<Type>()
+//        ruleBuilderDsl.init()
+//        rules.add(ruleBuilderDsl.build())
+//    }
 
     fun onErrorListener(errorListener: (enabled: Boolean, errorMessage: String?) -> Unit) {
         this.errorListener = errorListener

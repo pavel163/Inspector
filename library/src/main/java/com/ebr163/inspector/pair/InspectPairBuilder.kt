@@ -1,11 +1,8 @@
 package com.ebr163.inspector.pair
 
 import android.util.Pair
-
 import com.ebr163.inspector.Inspection
 import com.ebr163.inspector.rule.Rule
-
-import java.util.ArrayList
 import java.util.Collections
 
 /**
@@ -13,10 +10,8 @@ import java.util.Collections
  * on 10.01.2018.
  */
 
-class InspectPairBuilder<Type1, Type2>(
-        private val inspection1: Inspection<Type1>,
-        private val inspection2: Inspection<Type2>
-) {
+class InspectPairBuilder<Type1, Type2>(private val inspection1: Inspection<Type1>, private val inspection2: Inspection<Type2>) {
+
     private val rules: MutableList<Rule<Pair<Type1, Type2>>> = mutableListOf()
     private var errorListener: ((inspections: Pair<Inspection<Type1>, Inspection<Type2>>, enabled: Boolean, error: String?) -> Unit)? = null
 

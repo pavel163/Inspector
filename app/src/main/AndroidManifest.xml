@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ebr163.inspector.sample">
 
     <application
@@ -9,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".view_example.ViewExampleActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
@@ -19,8 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".value_example.ValueExampleActivity" />
-        <activity android:name=".pair.PairExampleActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".pair_example.PairExampleActivity" />
     </application>
 
 </manifest>

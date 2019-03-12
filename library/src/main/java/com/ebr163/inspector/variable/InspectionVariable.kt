@@ -11,7 +11,7 @@ import com.ebr163.inspector.rule.Rule
 class InspectionVariable<Type>(
         override var value: Type?,
         rules: MutableList<Rule<Type>>,
-        private var errorListener: ((Boolean, String?) -> Unit)?
+        private var errorListener: ((showError: Boolean, String?) -> Unit)?
 ) : AbstractInspection<Type>(rules) {
 
     override fun clear() {
@@ -23,7 +23,7 @@ class InspectionVariable<Type>(
     override fun inspect(): Boolean {
         errorListener?.invoke(false, null)
 
-        for (rule in rules) {
+        rules.forEach { rule ->
             if (!rule.verify(value)) {
                 errorListener?.invoke(true, rule.errorMessage())
                 return false
@@ -33,9 +33,9 @@ class InspectionVariable<Type>(
         return true
     }
 
-    override fun setErrorEnabled(enabled: Boolean, error: String) {
-        if (enabled) {
-            errorListener?.invoke(true, error)
+    override fun setErrorEnabled(showError: Boolean, errorMessage: String?) {
+        if (showError) {
+            errorListener?.invoke(true, errorMessage)
         } else {
             errorListener?.invoke(false, null)
         }

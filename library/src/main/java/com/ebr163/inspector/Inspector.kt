@@ -3,7 +3,6 @@ package com.ebr163.inspector
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import java.util.*
 
 /**
  * Created by Bakht
@@ -12,7 +11,7 @@ import java.util.*
 
 class Inspector(lifecycle: Lifecycle) : LifecycleObserver {
 
-    private var inspectionList: MutableList<InspectionWrap> = mutableListOf()
+    private var inspectionList = mutableListOf<InspectionWrap>()
     private var inspectListener: ((isValid: Boolean, values: Map<String, Any?>) -> Unit)? = null
 
     init {
@@ -41,7 +40,7 @@ class Inspector(lifecycle: Lifecycle) : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun clear() {
-        for (inspectionWrap in inspectionList) {
+        inspectionList.forEach { inspectionWrap ->
             inspectionWrap.inspection.clear()
         }
         inspectionList.clear()
@@ -52,13 +51,9 @@ class Inspector(lifecycle: Lifecycle) : LifecycleObserver {
         this.inspectListener = inspectListener
     }
 
-    fun addInspection(inspection: Inspection<*>) {
-        addInspection(null, inspection)
-    }
+    fun addInspection(inspection: Inspection<*>) = addInspection(null, inspection)
 
-    fun addInspection(key: String?, inspection: Inspection<*>) {
-        inspectionList.add(InspectionWrap(key, inspection))
-    }
+    fun addInspection(key: String?, inspection: Inspection<*>) = inspectionList.add(InspectionWrap(key, inspection))
 
     private class InspectionWrap(val key: String?, val inspection: Inspection<*>)
 }
