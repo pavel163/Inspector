@@ -11,7 +11,7 @@ import com.ebr163.inspector.rule.Rule
 class InspectionVariable<Type>(
         override var value: Type?,
         rules: MutableList<Rule<Type>>,
-        private var errorListener: ((showError: Boolean, String?) -> Unit)?
+        private var errorListener: ((showError: Boolean, errorMessage: String?) -> Unit)?
 ) : AbstractInspection<Type>(rules) {
 
     override fun clear() {
